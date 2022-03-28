@@ -39,9 +39,8 @@ const TODO = () => {
     }
 
     const handleCompleted = (e, idFromBelow) => {
-        setChecked(!checked);
-        console.log(checked)
-        if (checked){
+        console.log(e.target.checked)
+        if (e.target.checked){
         const x = todolist.filter(x => x.key === idFromBelow);
         x[0].completed = true
         setsyle({backgroundColor: 'green'})
@@ -69,7 +68,7 @@ const TODO = () => {
             <div>
                 {todolist.map((obj)=> {
                     if (obj.completed === true){
-                        return (<div key={obj.key} style={style}>
+                        return (<div key={obj.key} style={{backgroundColor:'green'}}>
                             <p>{obj.description}</p>
                                 <label>Completed?</label>
                                 <input type="checkbox" onChange={(event) => handleCompleted(event, obj.key)}/>
@@ -90,6 +89,7 @@ const TODO = () => {
             </div>
         </form>
     )
+
 }
 
 
